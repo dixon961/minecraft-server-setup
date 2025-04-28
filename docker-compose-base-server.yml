@@ -1,0 +1,51 @@
+services:
+  minecraft-server:
+    image: itzg/minecraft-server
+    environment:
+      SERVER_NAME: "MineServer"
+      MOTD: "Minecraft Server MOTD"
+      ICON: "https://getdrawings.com/free-icon/minecraft-server-icon-64x64-54.png"
+      EULA: "true"
+      TYPE: FABRIC
+      VERSION: 1.21.5
+      ONLINE_MODE: "false"
+      MEMORY: "6G"
+      USE_AIKAR_FLAGS: "true"
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      DIFFICULTY: "hard"
+      MAX_PLAYERS: 5
+      PVP: "false"
+      ALLOW_FLIGHT: "true"
+      SPAWN_PROTECTION: 0
+      SYNC_CHUNK_WRITES: "false"
+      MODRINTH_PROJECTS: |
+        fabric-api
+        lithium
+        easywhitelist
+        easyauth
+        ferrite-core
+        adaptiveview
+        krypton
+        chunky
+        vtps
+        fabrictailor
+      RCON_CMDS_STARTUP: |-
+        easywhitelist add USER_NICKNAME
+        op USER_NICKNAME
+        chunky spawn
+        chunky shape circle
+        chunky radius 500
+        chunky start
+    container_name: minecraft_nastya_and_lesha
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    # first port is - internet; second - inside docker
+    ports:
+      - "25568:25565"
+    # folder where all server info stored (world, mods, players info...)
+    volumes:
+      - ./data:/data
+    # should be more or equal MEMORY env
+    mem_limit: 6g
