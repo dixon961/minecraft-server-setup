@@ -37,7 +37,7 @@ services:
         chunky shape circle
         chunky radius 500
         chunky start
-    container_name: minecraft_nastya_and_lesha
+    container_name: minecraft_server_container
     tty: true
     stdin_open: true
     restart: unless-stopped
