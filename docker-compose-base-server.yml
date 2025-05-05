@@ -31,12 +31,17 @@ services:
         vtps
         fabrictailor
       RCON_CMDS_STARTUP: |-
+        gamerule doDaylightCycle false
         easywhitelist add USER_NICKNAME
         op USER_NICKNAME
         chunky spawn
         chunky shape circle
         chunky radius 500
         chunky start
+      RCON_CMDS_FIRST_CONNECT: |-
+        gamerule doDaylightCycle true
+      RCON_CMDS_LAST_DISCONNECT: |-
+        gamerule doDaylightCycle false
     container_name: minecraft_server_container
     tty: true
     stdin_open: true
