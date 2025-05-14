@@ -9,7 +9,7 @@ services:
       TYPE: FABRIC
       VERSION: 1.21.5
       ONLINE_MODE: "false"
-      MEMORY: "6G"
+      MEMORY: "4G"
       USE_AIKAR_FLAGS: "true"
       ENABLE_WHITELIST: "true"
       ENFORCE_WHITELIST: "true"
@@ -30,6 +30,7 @@ services:
         chunky
         vtps
         fabrictailor
+        fastback
       RCON_CMDS_STARTUP: |-
         gamerule doDaylightCycle false
         easywhitelist add USER_NICKNAME
@@ -53,4 +54,4 @@ services:
     volumes:
       - ./data:/data
     # should be more or equal MEMORY env
-    mem_limit: 6g
+    mem_limit: 4g
